@@ -1,0 +1,134 @@
+
+@import url("https://use.typekit.net/jmk3xov.css");
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+main {
+  width: 100vw;
+  color: var(--TEXTCOLOR);
+  z-index: 99;
+  position: absolute;
+  width: 100%;
+  margin: 0px auto;
+  padding: 120px 0px;
+  
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+
+*{
+  --BACKGROUND_COLOR1: rgba(22, 21, 50);
+  --BACKGROUND_COLOR2: rgba(46, 48, 93, 0.7);
+  --TEXTCOLOR: rgb(255, 255, 255);
+  box-sizing: border-box;
+}
+
+body{
+  background-color: var(--BACKGROUND_COLOR1);
+  background-image: url(Earth.jpg);
+  background-size: cover;
+  color: var(--TEXTCOLOR);
+}
+header{
+  height: 30vh;
+  background-color: var(--BACKGROUND_COLOR2);
+  border: 1px solid black;
+  box-shadow: 1px 1px 25px 5px var(--BACKGROUND_COLOR2);
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+
+}
+main{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 99%;
+  align-items: flex-end;
+}
+footer{
+  height: 20vh;
+  background-color:  var(--BACKGROUND_COLOR2);
+  border: 1px solid black;
+  box-shadow: 1px 1px 25px 5px var(--BACKGROUND_COLOR2);
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}
+a{
+  color: var(--TEXTCOLOR);
+  text-decoration: none;
+  font-size: 3.5em;
+  line-height: 60px;
+  word-break: break-all;
+
+}
+a:hover{
+  color: rgb(255, 213, 0);
+}
+ul{
+  list-style-type: none;
+  backdrop-filter: blur(10px); 
+  background-color: var(--BACKGROUND_COLOR2);
+  border-radius: 2em;
+  box-shadow: 1px 1px 25px 5px var(--BACKGROUND_COLOR2);
+  padding: 20px;
+  width: 60%;
+}
+h2{
+  font-size: 4em;
+  margin-top: 0;
+}
+h1{
+  font-size: 4.5em;
+  margin-top: 0;
+}
+
+img{
+  width: 180px;
+  border: 1px solid black;
+  margin: 5px;
+  margin-left: 40px;
+  border-radius: 50%;
+}
+
+@media only screen and (max-width: 1200px) {
+  h1{
+      font-size: 3.8em;
+  }
+  main{
+      align-items: center;
+  }
+  header{
+    width: 100%;
+  }
+  ul{
+    width: 100%;
+  }
+  footer{
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 1000px) {
+
+  a{
+      font-size: 2em;
+  }
+  h1{
+      font-size: 3.5em;
+  }
+}
+@media only screen and (max-width: 1000px) {
+
+
+  h1{
+      font-size: 2.2em;
+  }
+}
+
+  
