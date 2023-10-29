@@ -71,14 +71,14 @@ scene.background = spaceTexture;
 
 
 
-const earthTexture = new THREE.TextureLoader().load('mapMesh.jpg');
+const earthTexture = new THREE.TextureLoader().load('internetMap_edited.jpg');
 const normalTexture = new THREE.TextureLoader().load('normal.jpg');
 
 const earth = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
   new THREE.MeshStandardMaterial({
     map: earthTexture,
-    normalMap: normalTexture,
+/*     normalMap: normalTexture, */
   })
 );
 
