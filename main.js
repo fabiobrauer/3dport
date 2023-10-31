@@ -30,10 +30,10 @@ renderer.render(scene, camera);
 /* const light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 ); */
 /* light.position.set(-1,1-2); */
 
-const directionalLight = new THREE.DirectionalLight( 0xffffff, 0.5 );
+const directionalLight = new THREE.DirectionalLight( 0xffffff, 3 );
 /* const lightHelper = new THREE.DirectionalLightHelper(directionalLight) */
 
-directionalLight.position.set(1,0,1);
+directionalLight.position.set(-1,0,0.5);
 scene.add( directionalLight);
 
 
@@ -63,7 +63,7 @@ Array(300).fill().forEach(addRocks);
 
 // Background
 
-const spaceTexture = new THREE.TextureLoader().load('spacebackground.jpg');
+const spaceTexture = new THREE.TextureLoader().load('Background4.jpg');
 scene.background = spaceTexture;
 
 
@@ -71,14 +71,14 @@ scene.background = spaceTexture;
 
 
 
-const earthTexture = new THREE.TextureLoader().load('internetMap_edited.jpg');
-const normalTexture = new THREE.TextureLoader().load('normal.jpg');
+const earthTexture = new THREE.TextureLoader().load('earth_atmos_4096.jpg');
+const normalTexture = new THREE.TextureLoader().load('earth_normal_2048.jpg');
 
 const earth = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
   new THREE.MeshStandardMaterial({
     map: earthTexture,
-/*     normalMap: normalTexture, */
+    normalMap: normalTexture,
   })
 );
 
