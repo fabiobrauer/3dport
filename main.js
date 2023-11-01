@@ -33,7 +33,7 @@ renderer.render(scene, camera);
 const directionalLight = new THREE.DirectionalLight( 0xffffff, 3 );
 /* const lightHelper = new THREE.DirectionalLightHelper(directionalLight) */
 
-directionalLight.position.set(-1,0,0.5);
+directionalLight.position.set(2,0,-0.1);
 scene.add( directionalLight);
 
 
@@ -73,14 +73,18 @@ scene.background = spaceTexture;
 
 const earthTexture = new THREE.TextureLoader().load('earth_atmos_4096.jpg');
 const normalTexture = new THREE.TextureLoader().load('earth_normal_2048.jpg');
+const specularTexture = new THREE.TextureLoader().load('earth_specular_2048.jpg');
 
 const earth = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
   new THREE.MeshStandardMaterial({
     map: earthTexture,
+    specularMap: specularTexture,
     normalMap: normalTexture,
   })
 );
+
+
 
 scene.add(earth);
 
@@ -93,9 +97,9 @@ earth.position.setX(-2);
 
 function moveCamera() {
   const t = document.body.getBoundingClientRect().top;
-  earth.rotation.x += 0.05;
-  earth.rotation.y += 0.075;
-  earth.rotation.z += 0.05;
+  earth.rotation.x += 0.03;
+  earth.rotation.y += 0.03;
+  earth.rotation.z += 0.03;
 
 
 
@@ -114,7 +118,7 @@ function animate() {
 
 
 
-  earth.rotation.x += 0.005;
+  earth.rotation.y += 0.001;
 
   renderer.render(scene, camera);
 }
