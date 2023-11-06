@@ -1,5 +1,7 @@
 import './style.css';
 import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
 
 
 
@@ -30,11 +32,14 @@ renderer.render(scene, camera);
 /* const light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 ); */
 /* light.position.set(-1,1-2); */
 
-const directionalLight = new THREE.DirectionalLight( 0xffffff, 3 );
+const directionalLight = new THREE.DirectionalLight( 0xffffff, 12 );
+const directionalLight1 = new THREE.DirectionalLight( 0x00F9F5, 3 );
+const ambientlight = new THREE.AmbientLight( 0x00F9F5, 1 );
 /* const lightHelper = new THREE.DirectionalLightHelper(directionalLight) */
 
 directionalLight.position.set(2,0,-0.1);
-scene.add( directionalLight);
+directionalLight1.position.set(5,-4,0);
+scene.add( directionalLight, ambientlight);
 
 
 
@@ -63,7 +68,31 @@ Array(300).fill().forEach(addRocks);
 
 // Background
 
-const spaceTexture = new THREE.TextureLoader().load('Background4.jpg');
+const spaceTexture = new THREE.TextureLoader().load('Background5.jpg');
+
+
+////////////////
+let loadedModel;
+
+const loader = new GLTFLoader();
+loader.load( 'Model.glb', function ( gltf ) {
+  loadedModel = gltf
+
+  gltf.scene.position.x = -1.5;
+  gltf.scene.position.z = -4;
+  gltf.scene.scale.set(-0.36,0.36,0.36);
+
+	scene.add( gltf.scene );
+
+}, undefined, function ( error ) {
+
+	console.error( error );
+
+} );
+
+
+
+///////////////////////
 scene.background = spaceTexture;
 
 
@@ -86,6 +115,7 @@ const earth = new THREE.Mesh(
 
 
 
+
 scene.add(earth);
 
 earth.position.z = -5;
@@ -103,7 +133,7 @@ function moveCamera() {
 
 
 
-  camera.position.z = t * -0.01;
+  camera.position.z = t * -0.001;
   camera.position.x = t * -0.0002;
   camera.rotation.y = t * -0.0002;
 }
@@ -115,10 +145,13 @@ moveCamera();
 
 function animate() {
   requestAnimationFrame(animate);
+  if(loadedModel){
+    loadedModel.scene.rotation.y -= 0.001
+  }
 
 
+  earth.rotation.y -= 0.001;
 
-  earth.rotation.y += 0.001;
 
   renderer.render(scene, camera);
 }
